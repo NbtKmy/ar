@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <!-- info: https://github.com/AR-js-org/AR.js#-image-tracking -->
         <script src='https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js'></script>
         <!-- look-at: https://npm.io/package/aframe-look-at-component -->
@@ -57,7 +58,13 @@
             <a-nft
                 type='nft' url='https://arjs-cors-proxy.herokuapp.com/https://nbtkmy.github.io/ar/trex-image/map' 
                 smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
-                <a-text value="Vielen Dank fürs Mitspielen 2021! Guten Rutsch fürs Neujahr!" scale="120 120 120" look-at="[camera]"></a-text>
+                <!-- Many Thanks for "Mukashi mukashi font"! http://gomaricefont.web.fc2.com/font_page_mukasi_mukasi.html -->
+                <a-text value="今年もありがとう！来年もよろしく！"
+                font="./entity/non_ascii_char/gomarice_mukasi_mukasi-msdf.json"
+                font-image="./entity/non_ascii_char/gomaricemukasimukasi.png"
+                color="#33C3F0"
+                negate="false">
+                </a-text>
             </a-nft>
             <a-entity camera></a-entity>
         </a-scene>
