@@ -33,17 +33,17 @@
     </head>
     <body style='margin : 0px; overflow: hidden;'>
         <script>
-        let marker = { "1": false, "2": false, "3": false };
+        let markerBool = { "1": false, "2": false, "3": false };
 
         AFRAME.registerComponent('firestarter', {
             init: function () 
             {
                 let marker = this.el;
                 marker.addEventListener('markerFound', function() {
-                    markerVisible[ marker.id ] = true;
+                    markerBool[ marker.id ] = true;
                 });
                 marker.addEventListener('markerLost', function() {
-                    markerVisible[ marker.id ] = false;
+                    markerBool[ marker.id ] = false;
                 });
             }
         });
@@ -56,34 +56,34 @@
             },
             tick: function (time, deltaTime) 
             { 
-                if ( marker[1] && marker[2] && marker[3] ) {
+                if ( markerBool[1] && markerBool[2] && markerBool[3] ) {
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( marker[1] && marker[2] && !marker[3] ) {
+                else if ( markerBool[1] && markerBool[2] && !markerBool[3] ) {
                     this.text.setAttribute("value", "Nope");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( marker[1] && !marker[2] && marker[3] ) {
+                else if ( markerBool[1] && !markerBool[2] && markerBool[3] ) {
                     this.text.setAttribute("value", "Nee");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( marker[1] && !marker[2] && !marker[3] ) {
+                else if ( markerBool[1] && !markerBool[2] && !markerBool[3] ) {
                     this.text.setAttribute("value", "Sorry");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( !marker[1] && marker[2] && marker[3] ) {
+                else if ( !markerBool[1] && markerBool[2] && markerBool[3] ) {
                     this.text.setAttribute("value", "Schade");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( !marker[1] && marker[2] && !marker[3] ) {
+                else if ( !mmarkerBool[1] && markerBool[2] && !markerBool[3] ) {
                     this.text.setAttribute("value", "Zannen");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( !marker[1] && !marker[2] && marker[3] ) {
+                else if ( !markerBool[1] && !markerBool[2] && markerBool[3] ) {
                     this.text.setAttribute("value", "Mäno!");
                     this.text.setAttribute("visible", "true");
                 }
-                else { // if ( !marker[1] && !marker[2] && !marker[3] )
+                else { // if ( !markerBool[1] && !markerBool[2] && !markerBool[3] )
                     ; // Do nothing...
                 }
             }
@@ -104,9 +104,15 @@
                 </a-text>
             </a-marker>
 
-            <a-marker type="barcode" value="1" id="1" firestarter></a-marker>
-            <a-marker type="barcode" value="2" id="2" firestarter></a-marker>
-            <a-marker type="barcode" value="3" id="3" firestarter></a-marker>
+            <a-marker type="barcode" value="1" id="1" firestarter>
+
+            </a-marker>
+            <a-marker type="barcode" value="2" id="2" firestarter>
+
+            </a-marker>
+            <a-marker type="barcode" value="3" id="3" firestarter>
+
+            </a-marker>
             
 
             <!-- Many Thanks for "Mukashi mukashi font"! http://gomaricefont.web.fc2.com/font_page_mukasi_mukasi.html -->
