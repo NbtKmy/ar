@@ -32,7 +32,7 @@
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     </head>
     <body style='margin : 0px; overflow: hidden;'>
-        <script>
+        <!-- <script>
         let markerBool = { "1": false, "2": false, "3": false };
 
         AFRAME.registerComponent('firestarter', {
@@ -41,6 +41,7 @@
                 let marker = this.el;
                 marker.addEventListener('markerFound', function() {
                     markerBool[ marker.id ] = true;
+                    console.log( markerVisible );
                 });
                 marker.addEventListener('markerLost', function() {
                     markerBool[ marker.id ] = false;
@@ -57,38 +58,38 @@
             tick: function (time, deltaTime) 
             { 
                 if ( markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
                     this.text.setAttribute("value", "Nope");
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("value", "Nee");
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && !markerBool["3"] ) {
                     this.text.setAttribute("value", "Sorry");
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("value", "Schade");
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
                     this.text.setAttribute("value", "Zannen");
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("value", "Mäno!");
-                    this.text.setAttribute("visible", "true");
+                    this.text.setAttribute("visible", true);
                 }
                 else { // if ( !markerBool[1] && !markerBool[2] && !markerBool[3] )
                     ; // Do nothing...
                 }
             }
         });
-        </script>
+        </script> -->
 
         <a-scene embedded arjs>
 
@@ -100,10 +101,10 @@
                 scale="100 100 100"
                 position="0 0 0"
                 look-at="[camera]"
-                visible="false">
+                visible="true">
                 </a-text>
             </a-marker>
-
+            <!--
             <a-marker type="barcode" value="1" id="1" firestarter>
                 <a-plane position="0 0 0" 
                 rotation="-90 0 0"
@@ -122,7 +123,7 @@
                 material="color: blue">
                 </a-plane>
             </a-marker>
-            
+            -->
 
             <!-- Many Thanks for "Mukashi mukashi font"! http://gomaricefont.web.fc2.com/font_page_mukasi_mukasi.html -->
             <!-- <a-nft
@@ -140,7 +141,7 @@
             </a-nft> 
             -->
             <a-entity camera></a-entity>
-            <a-entity summon></a-entity>
+            <!-- <a-entity summon></a-entity> -->
         </a-scene>
     </body>
 </html>
