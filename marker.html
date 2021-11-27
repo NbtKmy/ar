@@ -56,30 +56,30 @@
             },
             tick: function (time, deltaTime) 
             { 
-                if ( markerBool[1] && markerBool[2] && markerBool[3] ) {
+                if ( markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( markerBool[1] && markerBool[2] && !markerBool[3] ) {
+                else if ( markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
                     this.text.setAttribute("value", "Nope");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( markerBool[1] && !markerBool[2] && markerBool[3] ) {
+                else if ( markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("value", "Nee");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( markerBool[1] && !markerBool[2] && !markerBool[3] ) {
+                else if ( markerBool["1"] && !markerBool["2"] && !markerBool["3"] ) {
                     this.text.setAttribute("value", "Sorry");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( !markerBool[1] && markerBool[2] && markerBool[3] ) {
+                else if ( !markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("value", "Schade");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( !markerBool[1] && markerBool[2] && !markerBool[3] ) {
+                else if ( !markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
                     this.text.setAttribute("value", "Zannen");
                     this.text.setAttribute("visible", "true");
                 }
-                else if ( !markerBool[1] && !markerBool[2] && markerBool[3] ) {
+                else if ( !markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("value", "Mäno!");
                     this.text.setAttribute("visible", "true");
                 }
