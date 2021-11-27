@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- info: https://github.com/AR-js-org/AR.js#-image-tracking -->
+        <script src='https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js'></script>
+        <!-- look-at: https://npm.io/package/aframe-look-at-component -->
+        <script src='https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js'></script>
+
+        <style>
+        .arjs-loader {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arjs-loader div {
+            text-align: center;
+            font-size: 1.25em;
+            color: white;
+        }
+        </style>
+
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    </head>
+    <body style='margin : 0px; overflow: hidden;'>
+        <script>
+        let marker = { "1": false, "2": false, "3": false };
+
+        AFRAME.registerComponent('firestarter', {
+            init: function () 
+            {
+                let marker = this.el;
+                marker.addEventListener('markerFound', function() {
+                    markerVisible[ marker.id ] = true;
+                });
+                marker.addEventListener('markerLost', function() {
+                    markerVisible[ marker.id ] = false;
+                });
+            }
+        });
+
+        AFRAME.registerComponent('summon', 
+        {   
+            init: function()
+            {
+                this.text = document.querySelector("#obj");
+            },
+            tick: function (time, deltaTime) 
+            { 
+                if ( marker[1] && marker[2] && marker[3] ) {
+                    this.text.setAttribute("visible", "true");
+                }
+                else if ( marker[1] && marker[2] && !marker[3] ) {
+                    this.text.setAttribute("value", "Nope");
+                    this.text.setAttribute("visible", "true");
+                }
+                else if ( marker[1] && !marker[2] && marker[3] ) {
+                    this.text.setAttribute("value", "Nee");
+                    this.text.setAttribute("visible", "true");
+                }
+                else if ( marker[1] && !marker[2] && !marker[3] ) {
+                    this.text.setAttribute("value", "Sorry");
+                    this.text.setAttribute("visible", "true");
+                }
+                else if ( !marker[1] && marker[2] && marker[3] ) {
+                    this.text.setAttribute("value", "Schade");
+                    this.text.setAttribute("visible", "true");
+                }
+                else if ( !marker[1] && marker[2] && !marker[3] ) {
+                    this.text.setAttribute("value", "Zannen");
+                    this.text.setAttribute("visible", "true");
+                }
+                else if ( !marker[1] && !marker[2] && marker[3] ) {
+                    this.text.setAttribute("value", "Mäno!");
+                    this.text.setAttribute("visible", "true");
+                }
+                else { // if ( !marker[1] && !marker[2] && !marker[3] )
+                    ; // Do nothing...
+                }
+            }
+        });
+        </script>
+
+        <a-scene embedded arjs>
+
+            <a-marker type="barcode" value="0" id="0">
+                <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+                <a-text 
+                id="obj"
+                value="Omedeto!"
+                scale="100 100 100"
+                position="0 0 0"
+                look-at="[camera]"
+                visible="false">
+                </a-text>
+            </a-marker>
+
+            <a-marker type="barcode" value="1" id="1" firestarter></a-marker>
+            <a-marker type="barcode" value="2" id="2" firestarter></a-marker>
+            <a-marker type="barcode" value="3" id="3" firestarter></a-marker>
+            
+
+            <!-- Many Thanks for "Mukashi mukashi font"! http://gomaricefont.web.fc2.com/font_page_mukasi_mukasi.html -->
+            <!-- <a-nft
+                type='nft' url='https://arjs-cors-proxy.herokuapp.com/https://nbtkmy.github.io/ar/trex-image/map' 
+                smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
+                
+                <a-text value="今年もありがとう！来年もよろしく！"
+                font="./entity/non_ascii_char/gomarice_mukasi_mukasi-msdf.json"
+                font-image="./entity/non_ascii_char/gomaricemukasimukasi.png"
+                scale="1 1 1"
+                position="0 0 0"
+                look-at="[camera]"
+                negate="false">
+                </a-text>
+            </a-nft> 
+            -->
+            <a-entity camera></a-entity>
+            <a-entity summon></a-entity>
+        </a-scene>
+    </body>
+</html>
