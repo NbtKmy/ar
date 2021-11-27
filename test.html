@@ -3,13 +3,14 @@
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
     <!-- we import arjs version without NFT but with marker + location based support -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
-        <a-marker preset="hiro">
+        <a-marker type="barcode" value="1" id="1">
             <a-entity
             position="0 0 0"
-            rotation="0 0 0"
             scale="0.05 0.05 0.05"
+            look-at="[camera]"
             gltf-model="./entity/winged_monster/winged_monster.gltf"
             ></a-entity>
         </a-marker>
