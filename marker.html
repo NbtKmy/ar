@@ -11,7 +11,7 @@
        
     </head>
     <body style='margin : 0px; overflow: hidden;'>
-        <!-- <script>
+        <script>
         let markerBool = { "1": false, "2": false, "3": false };
 
         AFRAME.registerComponent('firestarter', {
@@ -20,7 +20,6 @@
                 let marker = this.el;
                 marker.addEventListener('markerFound', function() {
                     markerBool[ marker.id ] = true;
-                    console.log( markerVisible );
                 });
                 marker.addEventListener('markerLost', function() {
                     markerBool[ marker.id ] = false;
@@ -40,27 +39,27 @@
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("value", "Nope");
+                    this.text.setAttribute("text", "value: Nope");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("value", "Nee");
+                    this.text.setAttribute("text", "value: Nee");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("value", "Sorry");
+                    this.text.setAttribute("text", "value: Sorry");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("value", "Schade");
+                    this.text.setAttribute("text", "value: Schade");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("value", "Zannen");
+                    this.text.setAttribute("text", "value: Zannen");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("value", "Mäno!");
+                    this.text.setAttribute("text", "value: Mist!");
                     this.text.setAttribute("visible", true);
                 }
                 else { // if ( !markerBool[1] && !markerBool[2] && !markerBool[3] )
@@ -68,20 +67,21 @@
                 }
             }
         });
-        </script> -->
-
+        </script>
         <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
 
-            <a-marker preset="hiro"> <!-- test -->
+            <a-marker  type="barcode" value="0" id="0">
                 <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
                 <a-entity 
-                    gltf-model='./entity/winged_monster/winged_monster.gltf' 
-                    look-at="[camera]" 
-                    scale="0.5 0.5 0.5"
-                    position="0 0 0">
+                geometry="primitive: plane; height: auto; width: auto"
+                aterial="color: blue"
+                text="value: Omedeto!"
+                id="obj"
+                look-at="[camera]"
+                visible="false">
                 </a-entity>
             </a-marker>
-            <!--
+            
             <a-marker type="barcode" value="1" id="1" firestarter>
                 <a-plane position="0 0 0" 
                 rotation="-90 0 0"
@@ -100,7 +100,7 @@
                 material="color: blue">
                 </a-plane>
             </a-marker>
-            -->
+            
 
             <!-- Many Thanks for "Mukashi mukashi font"! http://gomaricefont.web.fc2.com/font_page_mukasi_mukasi.html -->
             <!-- <a-nft
@@ -118,7 +118,7 @@
             </a-nft> 
             -->
             <a-entity camera></a-entity>
-            <!-- <a-entity summon></a-entity> -->
+            <a-entity summon></a-entity>
         </a-scene>
     </body>
 </html>
