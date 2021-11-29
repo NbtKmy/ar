@@ -42,27 +42,27 @@
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("text", "value: Nope");
+                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("text", "value: Nee");
+                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("text", "value: Sorry");
+                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("text", "value: Schade");
+                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("text", "value: Zannen");
+                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( !markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
-                    this.text.setAttribute("text", "value: Mist!");
+                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
                     this.text.setAttribute("visible", true);
                 }
                 else { // if ( !markerBool[1] && !markerBool[2] && !markerBool[3] )
@@ -75,9 +75,8 @@
             <a-marker  type="barcode" value="0" id="0">
                 <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
                 <a-entity 
-                geometry="primitive: plane; height: auto; width: auto"
+                geometry="primitive: plane"
                 material="color: blue"
-                text="value: Omedeto!"
                 id="obj"
                 look-at="[camera]"
                 visible="false">
@@ -86,7 +85,7 @@
             
             <a-marker type="barcode" value="1" id="1" firestarter>
                 <a-entity 
-                geometry="primitive:plane;" 
+                geometry="primitive: plane;" 
                 rotation="-90 0 0" 
                 material="shader:gif; src:url(./entity/gif/smoke.gif); opacity:.8">
                 </a-entity>
