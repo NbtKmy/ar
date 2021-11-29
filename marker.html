@@ -43,7 +43,8 @@
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
-                    this.text.setAttribute("material", "shader:gif; src:url(./entity/gif/explode.gif); opacity:.8");
+                    this.text.setAttribute("material", "shader", "gif");
+                    this.text.setAttribute("material", "src", "url(./entity/gif/explode.gif)");
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && !markerBool["2"] && markerBool["3"] ) {
