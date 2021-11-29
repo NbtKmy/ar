@@ -39,7 +39,7 @@
             { 
                 if ( markerBool["1"] && markerBool["2"] && markerBool["3"] ) {
                     this.text.setAttribute("text", "value: Omedeto!");
-                    this.text.setAttribute('material', 'color', 'blue');
+                    this.text.setAttribute('material', 'color', 'red');
                     this.text.setAttribute("visible", true);
                 }
                 else if ( markerBool["1"] && markerBool["2"] && !markerBool["3"] ) {
@@ -74,10 +74,8 @@
         </script>
         <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
             <a-marker  type="barcode" value="0" id="0">
-                <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
                 <a-entity 
                 geometry="primitive: plane"
-                material="color: blue"
                 id="obj"
                 look-at="[camera]"
                 visible="false">
